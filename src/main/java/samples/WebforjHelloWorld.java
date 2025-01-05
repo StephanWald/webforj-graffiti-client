@@ -12,7 +12,7 @@ import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.text.Label;
 import com.webforj.component.window.Frame;
 import com.webforj.exceptions.WebforjException;
-import com.webforj.graffiti.model.WebforjLoader;
+import com.webforj.graffiti.model.util.PodLoader;
 
 import java.io.File;
 import java.io.IOException;
@@ -63,9 +63,9 @@ public class WebforjHelloWorld extends App {
       return;
     }
 
-    WebforjLoader loader = new WebforjLoader();
-    loader.setJson(json);
-    final Component load = loader.load();
+    PodLoader loader = new PodLoader();
+
+    final Component load = loader.fromJson(json).load();
     if (load != null )
       mainFrame.add(load);
     else
