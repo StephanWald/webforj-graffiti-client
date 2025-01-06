@@ -64,11 +64,11 @@
         <artifactId>jetty-ee8-maven-plugin</artifactId>
         <version>${jetty.version}</version>
         <configuration>
-          <stopKey>graffiticlient</stopKey>
-          <stopPort>8080</stopPort>
+          <stopKey>graffiticlientdemo</stopKey>
+          <stopPort>8082</stopPort>
           <scan>${jetty.scan}</scan>
           <httpConnector>
-            <port>8080</port>
+            <port>8082</port>
           </httpConnector>
           <webApp>
             <contextPath>/</contextPath>
