@@ -5,7 +5,7 @@ sysgui! = api!.openSysGui("X0")
 
 wnd! = sysgui!.addWindow("Graffiti Layout Demo", $01111000$)
 
-layout! = "hello.json"
+layout! = "../src/main/resources/hello.json"
 GraffitiLayout.render(wnd!,layout!)
 
 process_events

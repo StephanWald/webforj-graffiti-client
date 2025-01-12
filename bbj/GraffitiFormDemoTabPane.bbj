@@ -9,8 +9,8 @@ tab = 0
  child = 1000 + tab
     graffiti_child! = window!.addChildWindow(child,0,0,750,330,"",$00100810$,child,$$)
 
-    use ::GraffitiLayout.bbj::GraffitiLayout 
-    layout! = "/Users/beff/DWCJ/DWCJfromBBj/hello.json"
+    use ::!!bbj/GraffitiLayout.bbj::GraffitiLayout 
+    layout! = "../src/main/resources/hello.json"
     GraffitiLayout.render(graffiti_child!,layout!)
 
     tabctrl!.addTab("Tab "+str(tab),graffiti_child!)
