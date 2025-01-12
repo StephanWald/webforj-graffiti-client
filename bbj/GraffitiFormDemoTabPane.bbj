@@ -1,0 +1,39 @@
+sysgui = unt
+open (sysgui)"X0"
+sysgui! = bbjapi().getSysGui()
+window! = sysgui!.addWindow(100,100,800,400,"Fixed Position Tab with Graffiti Dynamic Layout on Tab1",$00090083$,$$)
+tabctrl! = window!.addTabCtrl(101,10,10,780,380,$0010$)
+window!.setCallback(bbjapi().ON_CLOSE,"eoj")
+
+tab = 0
+ child = 1000 + tab
+    graffiti_child! = window!.addChildWindow(child,0,0,750,330,"",$00100810$,child,$$)
+
+    use ::GraffitiLayout.bbj::GraffitiLayout 
+    layout! = "/Users/beff/DWCJ/DWCJfromBBj/hello.json"
+    GraffitiLayout.render(graffiti_child!,layout!)
+
+    tabctrl!.addTab("Tab "+str(tab),graffiti_child!)
+
+for tab = 1 to 3
+    child = 1000 + tab
+    child! = window!.addChildWindow(child,0,0,750,330,"",$00000810$,child,$$)
+    child!.addEditBox(101,10*tab+10,10*tab+10,60,25,str(tab))
+    tabctrl!.addTab("Tab "+str(tab),child!)
+next tab
+
+window!.setTitle("TabCtrl ("+str(tab)+" tabs)")
+tabctrl!.setVisible(1)
+
+window!.setCallback(window!.ON_RESIZE, "onResize")
+
+process_events
+
+onResize:
+ev! = BBjAPI().getLastEvent()
+tabctrl!.setSize(ev!.getWidth()-20, ev!.getHeight()-20)
+graffiti_child!.setSize(ev!.getWidth()-50, ev!.getHeight()-70)
+return
+
+eoj:
+release
